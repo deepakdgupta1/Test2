@@ -28,6 +28,7 @@ jobs:
           docker-compose --version
 
       - name: Start MySQL with Docker Compose
+        working-directory: ./app
         run: docker-compose up -d
 
       - name: Wait for MySQL to be ready
