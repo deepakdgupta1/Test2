@@ -29,7 +29,13 @@ jobs:
 
       - name: Start MySQL with Docker Compose
         working-directory: ./app
-        run: docker-compose up -d
+        run: |
+          docker compose --file ./app/docker-compose.yml \
+            --secret MYSQL_USER=${{ secrets.MYSQL_USER }} \
+            --secret MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }} \
+            --secret MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }} \
+            --secret MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} \
+            up -d
 
       - name: Wait for MySQL to be ready
         run: |

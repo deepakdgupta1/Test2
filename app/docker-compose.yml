@@ -4,6 +4,11 @@ services:
   app:
     build: .
     restart: always
+    secrets:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     environment:
       - DB_HOST=db
       - DB_USER=${MYSQL_USER}
@@ -52,3 +57,14 @@ volumes:
 networks:
   app-network:
     driver: bridge
+
+secrets:
+  MYSQL_ROOT_PASSWORD:
+    external: true
+  MYSQL_DATABASE:
+    external: true
+  MYSQL_USER:
+    external: true
+  MYSQL_PASSWORD:
+    external: true
+    

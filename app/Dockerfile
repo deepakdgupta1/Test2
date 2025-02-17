@@ -1,4 +1,8 @@
 FROM python:3.9-slim
+RUN --mount=type=secret,id=MYSQL_USER,dst=/run/secrets/MYSQL_USER cat /run/secrets/MYSQL_USER
+RUN --mount=type=secret,id=MYSQL_PASSWORD,dst=/run/secrets/MYSQL_PASSWORD cat /run/secrets/MYSQL_PASSWORD
+RUN --mount=type=secret,id=MYSQL_DATABASE,dst=/run/secrets/MYSQL_DATABASE cat /run/secrets/MYSQL_DATABASE
+RUN --mount=type=secret,id=MYSQL_ROOT_PASSWORD,dst=/run/secrets/MYSQL_ROOT_PASSWORD cat /run/secrets/MYSQL_ROOT_PASSWORD
 
 # Set working directory
 WORKDIR /app
