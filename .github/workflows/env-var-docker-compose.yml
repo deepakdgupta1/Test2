@@ -1,6 +1,6 @@
 name: Run MySQL with Docker Compose
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   test-mysql:
